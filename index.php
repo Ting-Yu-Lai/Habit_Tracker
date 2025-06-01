@@ -114,6 +114,16 @@ $goal = '';
       background-color: lightcyan;
       text-align: center;
     }
+
+    a {
+      /* font-weight: bold; */
+      color: black;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: gray;
+    }
   </style>
 </head>
 
@@ -123,6 +133,10 @@ $goal = '';
     <h1>Habit Tracker</h1>
     <div class="header-right">
       <div>Rules</div>
+      <span>/</span>
+      <div>
+        <a href="./login_page.php">Login</a>
+      </div>
       <span>/</span>
       <div>About</div>
     </div>
