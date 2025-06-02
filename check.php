@@ -36,6 +36,7 @@ if ($result->num_rows === 1) {
         $_SESSION['login'] = 1;
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['account'] = $row['account'];
+        $_SESSION['username'] = $row['name'];
         header("Location: index.php");
         exit();
     } else {
