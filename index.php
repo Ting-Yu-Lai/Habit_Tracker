@@ -43,6 +43,12 @@ $goal = '';
       padding: 10px
     }
 
+    .username {
+      font-weight: bold;
+      font-size: 24px;
+      color: darkblue;
+    }
+
     .goal-bar {
       width: 100%;
       height: 10vh;
@@ -131,17 +137,17 @@ $goal = '';
   <header>
     <h1>Habit Tracker</h1>
     <div class="header-right">
-      <div>Rules</div>
-      <span>/</span>
       <div>
         <?php
         if (isset($_SESSION['login']) && $_SESSION['login'] === 1) {
-          echo "<a href='logout.php'>Logout</a>";
+          echo "<strong>{$_SESSION['username']}</strong> <a href='logout.php'>Logout</a>";
         } else {
           echo  "<a href='./login_page.php'>Login</a>";
         }
         ?>
       </div>
+      <span>/</span>
+      <div>Rules</div>
       <span>/</span>
       <div>About</div>
     </div>
