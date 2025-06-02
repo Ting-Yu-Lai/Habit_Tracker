@@ -1,7 +1,6 @@
 <?php
+session_start();
 $goal = '';
-
-
 ?>
 <!--##################################################主程式開始################################################## -->
 <!DOCTYPE html>
@@ -135,7 +134,13 @@ $goal = '';
       <div>Rules</div>
       <span>/</span>
       <div>
-        <a href="./login_page.php">Login</a>
+        <?php
+        if (isset($_SESSION['login']) && $_SESSION['login'] === 1) {
+          echo "<a href='logout.php'>Logout</a>";
+        } else {
+          echo  "<a href='./login_page.php'>Login</a>";
+        }
+        ?>
       </div>
       <span>/</span>
       <div>About</div>
