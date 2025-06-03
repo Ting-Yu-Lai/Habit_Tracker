@@ -118,6 +118,7 @@
     // 啟動session
     session_start();
     ?>
+
     <!-- 登入畫面 login-box -->
     <div class="login-box">
         <header>
@@ -126,10 +127,10 @@
         <div class="acc-pw-box">
             <form action="check.php" method="post">
                 <div class="acc-box">
-                    <input type="text" name="acc" id="" placeholder="Username">
+                    <input type="text" name="account" id="" placeholder="Username">
                 </div>
                 <div class="pw-box">
-                    <input type="text" name="pw" id="" placeholder="Password">
+                    <input type="text" name="password" id="" placeholder="Password">
                 </div>
                 <button type="submit">Login</button>
 
@@ -140,6 +141,20 @@
         <footer>
             Don't have an account? <a href="./signup.php">Signup</a>
         </footer>
+
+        </form>
+
+        <!-- 登入失敗提示 -->
+        <?php
+            if(isset($_SESSION['login'])) {
+                
+            }
+        
+            if (isset($_SESSION['error'])) {
+                echo "<p style='color:red'>" . $_SESSION['error'] . "</p>";
+                unset($_SESSION['error']); // 顯示完清除錯誤訊息
+            }
+        ?>
     </div>
 
 

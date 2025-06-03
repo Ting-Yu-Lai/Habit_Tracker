@@ -1,7 +1,25 @@
 <?php
 session_start();
-$goal = '';
+require_once('db.php');
+
+if (!isset($_SESSION['user_id'])) {
+  header("Location: login_page.php");
+  exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+$stmt = $conn->prepare("SELECT goal_text FROM goals WHERE user_id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($goal);
+$stmt->fetch();
+$stmt->close();
 ?>
+
+
+
+
 <!--##################################################主程式開始################################################## -->
 <!DOCTYPE html>
 <html lang="en">
@@ -155,8 +173,22 @@ $goal = '';
 
   <!-- goal bar -->
   <div class="goal-bar">
-    <input type="text" name="goal" id="" placeholder="Write down your goals">
-    <div class="goal-text">I'm a person who really loves $goal </div>
+    <form action="./goal_check.php" method="post">
+    <?php if ($goal): ?>
+      <input type="text" name="goal" id="" placeholder="<?= htmlspecialchars($goal) ?>">
+    <?php else: ?>
+      <input type="text" name="goal" id="" placeholder="You haven't set a goal yet.">
+    <?php endif; ?>
+    <?php if (!$goal): ?>
+    <button type="submit">確認</button>
+    <?php else: ?>
+    <button type="submit">更新</button>
+    <?php endif; ?>
+    </form>
+    <div class="goal-text">I'm a person who really loves <?= $goal ?> </div>
+    <!-- <pre> 印出變數的內容 
+    <?php var_dump($goal); ?>
+    </pre> -->
   </div>
 
   <!-- main -->
