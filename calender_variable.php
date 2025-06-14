@@ -47,5 +47,5 @@ if ($month + 1 < 13) {
     $nextYear = $year + 1;
 }
 
-$eng_month = strtoupper(date("M", strtotime("$year-$month-01")));
+$eng_month = date("F", strtotime("$year-$month-01"));
 ?>

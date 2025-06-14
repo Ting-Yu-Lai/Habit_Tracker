@@ -43,7 +43,7 @@ $stmt->close();
       width: 100%;
       height: 10vh;
       padding: 10px;
-      background-color: lightblue;
+      /* background-color: lightblue; */
       display: flex;
       justify-content: space-between;
     }
@@ -74,6 +74,25 @@ $stmt->close();
       padding: 10px
     }
 
+    .goal-bar button {
+      height: 40px;
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #000;
+      color: #fff;
+      /* border: none; */
+      border-radius: 6%;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .goal-bar button:hover {
+      background-color: #fff;
+      color: #000;
+      /* border: 2px solid #000; */
+    }
+
     .rulesModal {
       display: none;
       position: fixed;
@@ -93,6 +112,57 @@ $stmt->close();
       font-size: 32px;
       color: black;
       font-weight: bold;
+    }
+
+    #openRules:hover {
+      color: gray;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      text-align: left;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+    }
+
+    .rulesModalContent h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #2c3e50;
+    }
+
+    .rules-list {
+      list-style: decimal inside;
+      padding-left: 0;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .rules-list li {
+      margin-bottom: 15px;
+    }
+
+    #closeRules {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #closeRules:hover {
+      color:white;
+      background-color:rgb(42, 51, 59);
     }
 
     input {
@@ -116,7 +186,7 @@ $stmt->close();
     .main {
       width: 100%;
       height: 75vh;
-      background-color: lightgray;
+      /* background-color: lightgray; */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -199,8 +269,11 @@ $stmt->close();
     footer {
       width: 100%;
       height: 5vh;
-      background-color: lightcyan;
+      /* background-color: lightcyan; */
       text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     a {
@@ -247,9 +320,9 @@ $stmt->close();
         <input type="text" name="goal" id="" placeholder="You haven't set a goal yet.">
       <?php endif; ?>
       <?php if (!$goal): ?>
-        <button type="submit">確認</button>
+        <button type="submit">Set Goal</button>
       <?php else: ?>
-        <button type="submit">更新</button>
+        <button type="submit">Edit Goal</button>
       <?php endif; ?>
     </form>
     <div class="goal-text">I'm a person who really loves <?= $goal ?> </div>
@@ -292,8 +365,16 @@ $stmt->close();
   </footer>
 
   <div class="rulesModal">
-    <h2>Rules</h2>
-    <button type="button" id="closeRules">close</button>
+    <div class="modal-content">
+      <h2>Habit Tracker Rules</h2>
+      <ol class="rules-list">
+        <li><strong>Mark it every day</strong><br>
+          — Don’t aim for perfection. Just keep going.</li>
+        <li><strong>Never miss twice</strong><br> — Missing once is okay, but don’t let it become a new habit.</li>
+        <li><strong>Make progress visible</strong><br> — Seeing your streak helps you stay motivated.</li>
+      </ol>
+      <button type="button" id="closeRules">close</button>
+    </div>
   </div>
   <script>
     // bind

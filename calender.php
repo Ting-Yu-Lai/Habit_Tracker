@@ -82,9 +82,13 @@ $stmt->close();
             margin-left: -1px;
             margin-bottom: -1px;
             text-align: center;
-            color: rgb(241, 248, 255);
+            color: lightslategray;
             border-radius: 50%;
             padding-top: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* 星期一到星期日的外框 */
@@ -93,28 +97,18 @@ $stmt->close();
             width: calc(100% / 7);
             height: 66.86px;
             background-color: transparent;
-
             margin-left: -1px;
             margin-bottom: -1px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
-            color: #f1f8ff;
+            color:rgb(0, 0, 0);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* 字型 */
             font-size: 18px;
-            /* 字體大小 */
             font-weight: 500;
-            /* 字體粗細 */
-
             border-radius: 50%;
-            /* 圓形外觀 */
             transform: scale(0.85);
-            /* 稍微小一點但不壓縮太過 */
             transition: all 0.2s ease-in-out;
-            /* 增加動態感 */
         }
 
         .day-content {
@@ -127,39 +121,42 @@ $stmt->close();
         .date-number {
             font-size: 18px;
             font-weight: bold;
-            color: #f1f8ff;
+            color:rgb(0, 0, 0);
             margin-bottom: 4px;
         }
 
         .check-day {
             width: 18px;
             height: 18px;
-            accent-color: #ff6b6b;
-            /* 讓 checkbox 更美觀 */
+            accent-color:rgb(63, 250, 0);
             cursor: pointer;
         }
 
 
         .box-yearandmonth {
             width: 100%;
-            height: 50px;
+            height: 20px;
             /* background-color: #f0f0f0; */
             display: flex;
-            justify-content: space-between;
-            /* align-items: center; */
+            justify-content: start;
+            align-items: center;
+            /* text-align: center; */
             /* border-bottom: 1px solid #ccc; */
         }
 
         .box-year {
             text-align: center;
             /* padding-top: 15px; */
-            font-size: 35px;
-            width: 50%;
+            font-size: 20px;
+            /* width: 50%; */
+            margin-left: 60px;
+            /* font-style: italic; */
             height: 100%;
             background-color: transparent;
-            color: rgb(235, 34, 93);
-            text-shadow: 3px 3px 12px rgb(200, 50, 50);
-            position: relative;
+            color: rgb(0, 0, 0);
+            /* position: relative; */
+            font-family: 'Segoe UI', sans-serif;
+
         }
 
         .month-left {
@@ -176,12 +173,15 @@ $stmt->close();
 
         .box-month {
             text-align: center;
-            font-size: 35px;
-            width: 50%;
+            /* font-style: italic; */
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 20px;
+            /* width: 50%; */
             height: 100%;
+            margin-left: 20px;
             background-color: transparent;
-            color: rgb(235, 34, 93);
-            position: relative;
+            color: rgb(0, 0, 0);
+            /* position: relative; */
         }
 
         .month-right {
@@ -205,11 +205,11 @@ $stmt->close();
     <div class="box-yearandmonth">
         <div class="box-year">
             <?php echo "$year"; ?>
-            <a id="preMonthBtn" class="month-left" href="index.php?year=<?php echo $preYear; ?>&month=<?php echo $preMonth; ?>"></a>
+            <!-- <a id="preMonthBtn" class="month-left" href="index.php?year=<?php echo $preYear; ?>&month=<?php echo $preMonth; ?>"></a> -->
         </div>
         <div class="box-month">
             <?php echo "$eng_month"; ?>
-            <a id="nextMonthBtn" class="month-right" href="index.php?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>"></a>
+            <!-- <a id="nextMonthBtn" class="month-right" href="index.php?year=<?php echo $nextYear; ?>&month=<?php echo $nextMonth; ?>"></a> -->
         </div>
     </div>
 
