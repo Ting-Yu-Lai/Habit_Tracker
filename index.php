@@ -113,8 +113,20 @@ $stmt->close();
       color: black;
       font-weight: bold;
     }
-
+    
     #openRules:hover {
+      color: gray;
+    }
+    
+    #openAbout {
+      border: none;
+      background-color: transparent;
+      font-size: 32px;
+      color: black;
+      font-weight: bold;
+    }
+    
+    #openAbout:hover {
       color: gray;
     }
 
@@ -148,6 +160,19 @@ $stmt->close();
       margin-bottom: 15px;
     }
 
+    .aboutModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
     #closeRules {
       display: block;
       margin: 20px auto 0;
@@ -161,8 +186,66 @@ $stmt->close();
     }
 
     #closeRules:hover {
-      color:white;
-      background-color:rgb(42, 51, 59);
+      color: white;
+      background-color: rgb(42, 51, 59);
+    }
+    
+    #closeAbout {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #000;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #closeAbout:hover {
+      color: white;
+      background-color: rgb(42, 51, 59);
+    }
+
+    .about-container {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      color: black;
+      background-color: white;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+
+    .about-container h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color:rgb(0, 0, 0);
+    }
+
+    .about-container h3 {
+      margin-top: 30px;
+      color: rgb(0, 0, 0);
+    }
+
+    .about-container p {
+      line-height: 1.6;
+      font-size: 18px;
+      color: rgb(0, 0, 0);
+    }
+
+    .about-container ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .about-container li {
+      margin-bottom: 10px;
+      font-size: 16px;
     }
 
     input {
@@ -208,7 +291,6 @@ $stmt->close();
       /* justify-content: space-between; */
       /* align-items: center; */
       z-index: 1;
-
     }
 
 
@@ -240,24 +322,24 @@ $stmt->close();
     }
 
     .my-streak {
-      font-size: 24px;
+      font-size: 32px;
       font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background-color: lightcoral; */
     }
 
     .consistency {
-      margin-top: 30px;
-      /* background-color: #fff; */
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin-top: 20px;
+      font-size: 24px;
+      /* background-color: lightblue; */
     }
 
     .level {
-      /* margin-top: 30px; */
-      /* background-color: #fff; */
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      margin-top: 10px;
+      font-size: 24px;
+      /* background-color: lightblue; */
     }
 
     .medal-box {
@@ -307,7 +389,7 @@ $stmt->close();
         <button type="button" id="openRules">Rules</button>
       </div>
       <span>/</span>
-      <div>About</div>
+      <button type="button" id="openAbout">About</button>
     </div>
   </header>
 
@@ -347,12 +429,13 @@ $stmt->close();
     <div class="main-right">
       <div class="tracker-box">
         <div class="my-streak">
-          My Streak</div>
+          My Streak
+        </div>
         <div class="consistency">
-          Consistency: <?= getKeepDay('habit_tracker_status') ?> days
+            Consistency: <?= getKeepDay('habit_tracker_status') ?> days
         </div>
         <div class="level">
-          Level: <?= getLevelName(getKeepDay('habit_tracker_status')) ?>
+            Level: <?= getLevelName(getKeepDay('habit_tracker_status')) ?>
         </div>
       </div>
       <div class="medal-box"></div>
@@ -376,16 +459,45 @@ $stmt->close();
       <button type="button" id="closeRules">close</button>
     </div>
   </div>
+
+  <div class="aboutModal">
+    <div class="about-container">
+      <h2>About Habit Tracker</h2>
+      <p>This is a minimalist habit tracking tool inspired by <em>Atomic Habits</em>. Our goal is to help you stay consistent with your goals through simple daily check-ins.</p>
+
+      <h3>Key Features</h3>
+      <ul>
+        <li>🎯 Set and update your personal goal</li>
+        <li>📅 Visual calendar with check marks</li>
+        <li>🔥 Real-time streak counter</li>
+        <li>🏅 Gamified levels based on your streak</li>
+      </ul>
+
+      <h3>Why Build Habits?</h3>
+      <p>Small actions done consistently lead to big results. This app helps you stay on track and stay accountable.</p>
+      <button type="button" id="closeAbout">close</button>
+    </div>
+  </div>
+
   <script>
     // bind
     openRules = document.getElementById('openRules');
     closeRules = document.getElementById('closeRules');
+
+    openAbout = document.getElementById('openAbout');
+    closeAbout = document.getElementById('closeAbout');
     // action
     openRules.addEventListener('click', function() {
       document.querySelector('.rulesModal').style.display = 'flex';
     });
     closeRules.addEventListener('click', function() {
       document.querySelector('.rulesModal').style.display = 'none';
+    });
+    openAbout.addEventListener('click', function() {
+      document.querySelector('.aboutModal').style.display = 'flex';
+    });
+    closeAbout.addEventListener('click', function() {
+      document.querySelector('.aboutModal').style.display = 'none';
     });
   </script>
 </body>

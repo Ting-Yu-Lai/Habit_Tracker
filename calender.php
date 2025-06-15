@@ -148,6 +148,7 @@ $stmt->close();
             text-align: center;
             /* padding-top: 15px; */
             font-size: 20px;
+            font-weight: bold;
             /* width: 50%; */
             margin-left: 60px;
             /* font-style: italic; */
@@ -173,6 +174,7 @@ $stmt->close();
 
         .box-month {
             text-align: center;
+            font-weight: bold;
             /* font-style: italic; */
             font-family: 'Segoe UI', sans-serif;
             font-size: 20px;
