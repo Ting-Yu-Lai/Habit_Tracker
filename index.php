@@ -261,7 +261,8 @@ $stmt->close();
       height: 3vh;
       font-weight: 500;
       font-style: italic;
-      color: lightgray;
+      font-weight: bold;
+      color: gray;
       padding-left: 1em;
       /* background-color: lightblue; */
     }
