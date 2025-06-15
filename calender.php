@@ -102,7 +102,7 @@ $stmt->close();
             display: flex;
             align-items: center;
             justify-content: center;
-            color:rgb(0, 0, 0);
+            color: rgb(0, 0, 0);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 18px;
             font-weight: 500;
@@ -121,14 +121,14 @@ $stmt->close();
         .date-number {
             font-size: 18px;
             font-weight: bold;
-            color:rgb(0, 0, 0);
+            color: rgb(0, 0, 0);
             margin-bottom: 4px;
         }
 
         .check-day {
             width: 18px;
             height: 18px;
-            accent-color:rgb(63, 250, 0);
+            accent-color: rgb(63, 250, 0);
             cursor: pointer;
         }
 
@@ -247,11 +247,14 @@ $stmt->close();
         echo "<div class='$class'>";
         echo "<div class='day-content'>";
         echo "<div class='date-number'>{$days['days']}</div>";
-        echo "<input type='checkbox' class='check-day' data-date='{$currentDate}' data-goal-id='{$goal_id}' {$isChecked}>";
-        echo "</div>";
-
-        echo "</div>";
+        if ($currentDate <= $toDay) {
+            echo "<input type='checkbox' class='check-day' data-date='{$currentDate}' data-goal-id='{$goal_id}' {$isChecked}>";
+        } else {
+            echo "<input type='checkbox' class='check-day future' data-date='{$currentDate}' disabled>";
+        }
         $boxposition++;
+        echo "  </div>"; 
+        echo "</div>";
     }
 
 
