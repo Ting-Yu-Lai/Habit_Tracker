@@ -113,11 +113,11 @@ $stmt->close();
       color: black;
       font-weight: bold;
     }
-    
+
     #openRules:hover {
       color: gray;
     }
-    
+
     #openAbout {
       border: none;
       background-color: transparent;
@@ -125,7 +125,7 @@ $stmt->close();
       color: black;
       font-weight: bold;
     }
-    
+
     #openAbout:hover {
       color: gray;
     }
@@ -189,7 +189,7 @@ $stmt->close();
       color: white;
       background-color: rgb(42, 51, 59);
     }
-    
+
     #closeAbout {
       display: block;
       margin: 20px auto 0;
@@ -224,7 +224,7 @@ $stmt->close();
     .about-container h2 {
       font-size: 36px;
       margin-bottom: 20px;
-      color:rgb(0, 0, 0);
+      color: rgb(0, 0, 0);
     }
 
     .about-container h3 {
@@ -432,10 +432,10 @@ $stmt->close();
           My Streak
         </div>
         <div class="consistency">
-            Consistency: <?= getKeepDay('habit_tracker_status') ?> days
+          Consistency: <strong><?= getKeepDay('habit_tracker_status') ?></strong> days
         </div>
         <div class="level">
-            Level: <?= getLevelName(getKeepDay('habit_tracker_status')) ?>
+          Level: <strong><?= getLevelName(getKeepDay('habit_tracker_status')) ?></strong>
         </div>
       </div>
       <div class="medal-box"></div>
